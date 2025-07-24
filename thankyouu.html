@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://cdn.shopify.com/s/files/1/0249/6472/6880/files/ezgif-4-a0d4bf455c_480x480.gif?v=1663641726') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff8b5;
+      font-size: 2.5em;
+      text-shadow: 0 0 15px #fff8b5, 0 0 30px #fcd34d;
+      margin-top: 120px;
+    }
+
+    .polaroids {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 30px;
+      z-index: 5;
+    }
+
+    .polaroids img {
+      width: 130px;
+      height: auto;
+      border: 8px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transform: rotate(-5deg);
+    }
+
+    .polaroids img:nth-child(2) {
+      transform: rotate(5deg);
+    }
+
+    .polaroids img:nth-child(3) {
+      transform: rotate(-7deg);
+    }
+
+    .sunflower {
+      position: fixed;
+      top: -50px;
+      font-size: 1.5rem;
+      animation: fall 5s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .home-btn {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background: rgba(255, 248, 181, 0.2);
+      border: 2px solid #fff8b5;
+      color: #fff8b5;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px #ffe369, 0 0 20px #fcd34d;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .home-btn:hover {
+      background: #fff8b5;
+      color: #000;
+      box-shadow: 0 0 20px #fff8b5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌻 Polaroid Images -->
+  <div class="polaroids">
+    <img src="https://i.pinimg.com/564x/2b/bc/af/2bbcaf8b5d4409e227782d4fe4484b59.jpg" alt="img1">
+    <img src="https://i.pinimg.com/originals/85/bd/06/85bd06c324ea37c5eadec42c5927c154.jpg?nii=t" alt="img2">
+    <img src="https://i.pinimg.com/236x/50/74/af/5074afa5ccf856a92e7efabdfc6a1867.jpg" alt="img3">
+  </div>
+
+  <!-- ✨ Glowing Thank You Text -->
+  <h1>thank you for participating on my little project</h1>
+
+  <!-- 🏠 Home Button -->
+ <a href="https://yourdomain.com/path-to-home/index.html" class="home-btn">🏠 Home</a>
+
+
+  <!-- 🌻 Sunflower Rain Script -->
+  <script>
+    const sunflowerRain = () => {
+      const emoji = document.createElement('div');
+      emoji.classList.add('sunflower');
+      emoji.innerText = '🌻';
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.fontSize = Math.random() * 20 + 10 + 'px';
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 5000);
+    };
+
+    setInterval(sunflowerRain, 300);
+  </script>
+</body>
+</html>
+
+
