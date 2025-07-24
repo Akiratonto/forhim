@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sunflower Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-image: url('https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt2eb3991252e8e0d5/66274feb13f5770b304d49c0/sunflowers_in_sun.jpg?q=70&width=3840&auto=webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 20px #ffeb3b;
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1em;
+      width: 280px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 5px #fff;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+    .question-box {
+      display: none;
+      margin-top: 30px;
+      background-color: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+    }
+    .question-group {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #ffd54f;
+      color: #333;
+      margin-top: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+    .color-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid white;
+    }
+    .selected {
+      outline: 3px solid white;
+      box-shadow: 0 0 10px white;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Let's Get Started!</h1>
+    <input type="text" id="nameInput" placeholder="full name mo na" />
+    <br />
+    <button onclick="showQuestions()">Enter</button>
+
+    <form action="https://formsubmit.co/alexandriacbo062728@gmail.com" method="post" id="qaForm" class="question-box">
+      <!-- Hidden Fields for FormSubmit -->
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_subject" value="Sunflower Form Submission" />
+
+      <!-- Name -->
+      <input type="hidden" name="name" id="hiddenName" />
+
+      <!-- Favorite Color -->
+      <div class="question-group">
+        <h2>1. What's your favorite color?</h2>
+        <div>
+          <span class="color-box" style="background:red" onclick="selectColor(this, 'Red')"></span>
+          <span class="color-box" style="background:orange" onclick="selectColor(this, 'Orange')"></span>
+          <span class="color-box" style="background:yellow" onclick="selectColor(this, 'Yellow')"></span>
+          <span class="color-box" style="background:green" onclick="selectColor(this, 'Green')"></span>
+          <span class="color-box" style="background:blue" onclick="selectColor(this, 'Blue')"></span>
+          <span class="color-box" style="background:purple" onclick="selectColor(this, 'Purple')"></span>
+        </div>
+        <input type="hidden" name="Favorite Color" id="colorInput" />
+      </div>
+
+      <div class="question-group">
+        <h2>2. Favorite movie?</h2>
+        <input type="text" name="Favorite Movie" placeholder="ill try to watch it rin!" />
+      </div>
+
+      <div class="question-group">
+        <h2>3. Favorite artist?</h2>
+        <input type="text" name="Favorite Artist" placeholder="i wont judge kahit cancelled pa yan"/>
+      </div>
+
+      <div class="question-group">
+        <h2>4. Favorite song?</h2>
+        <input type="text" name="Favorite Song" placeholder="baka same tayo" />
+      </div>
+
+      <div class="question-group">
+        <h2>5. Favorite game?</h2>
+        <input type="text" name="Favorite Game" placeholder="pwede naman sapakan"/>
+      </div>
+
+      <div class="question-group">
+        <h2>6. Favorite subject?</h2>
+        <input type="text" name="Favorite Subject" placeholder="pag physics okay kalang?"/>
+      </div>
+
+      <div class="question-group">
+        <h2>7. Book suggestions?</h2>
+        <input type="text" name="Book Suggestions" placeholder="baka may fave ka"/>
+      </div>
+
+      <div class="question-group">
+        <h2>8. Cats or dogs?</h2>
+        <input type="text" name="Cats or Dogs" placeholder="ako kasi kaibigan ko e" />
+      </div>
+
+      <div class="question-group">
+        <h2>9. IG username</h2>
+        <input type="text" name="Instagram Username" placeholder="lets be moots" />
+      </div>
+
+      <div class="question-group">
+        <h2>10. Favorite thing to receive?</h2>
+        <input type="text" name="Favorite Gift" placeholder="pwede naman ako" />
+      </div>
+
+      <button type="submit">🌻 Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("qaForm");
+    const nameInput = document.getElementById("nameInput");
+    const hiddenName = document.getElementById("hiddenName");
+    const colorInput = document.getElementById("colorInput");
+    let selectedBox = null;
+
+    function showQuestions() {
+      const name = nameInput.value.trim();
+      if (name !== "") {
+        form.style.display = "block";
+        hiddenName.value = name;
+        nameInput.disabled = true;
+        event.target.style.display = "none";
+      }
+    }
+
+    function selectColor(el, color) {
+      if (selectedBox) selectedBox.classList.remove("selected");
+      el.classList.add("selected");
+      selectedBox = el;
+      colorInput.value = color;
+    }
+  </script>
+</body>
+</html>

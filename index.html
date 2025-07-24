@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sunflower Greeting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: url('https://cdn-icons-png.flaticon.com/512/7661/7661454.png') 16 16, auto;
+    }
+
+    body {
+      position: relative;
+      height: 100vh;
+      background-image: url('https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt2eb3991252e8e0d5/66274feb13f5770b304d49c0/sunflowers_in_sun.jpg?q=70&width=3840&auto=webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 48px;
+      color: #fff8b0;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow:
+        0 0 2px #ffe066,
+        0 0 4px #ffeb3b,
+        0 0 6px #ffdf00;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow:
+          0 0 2px #ffe066,
+          0 0 4px #ffeb3b,
+          0 0 6px #ffdf00;
+      }
+      to {
+        text-shadow:
+          0 0 3px #fff176,
+          0 0 5px #ffee58,
+          0 0 7px #fdd835;
+      }
+    }
+
+    .buttons {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      font-family: 'Playfair Display', serif;
+      padding: 10px 20px;
+      font-size: 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ffeb3b;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+      box-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+    }
+
+    button:hover {
+      background-color: #fff176;
+      transform: scale(1.1);
+    }
+
+    .moved {
+      position: absolute;
+      top: 0;
+      left: 120px;
+    }
+  </style>
+</head>
+<body>
+  <h1>May I get to know you?</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    noBtn.addEventListener('click', () => {
+      yesBtn.style.position = 'absolute';
+      yesBtn.style.top = Math.floor(Math.random() * 200 + 50) + "px";
+      yesBtn.style.left = Math.floor(Math.random() * 300) + "px";
+    });
+
+    yesBtn.addEventListener('click', () => {
+      window.location.href = "yes.html"; // Replace with your desired link
+    });
+  </script>
+</body>
+</html>
